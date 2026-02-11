@@ -202,5 +202,63 @@ To convert this project into an Angular application called **Horizon Bow**, we n
                mode: 'nearest',
                intersect: false,
                callbacks: {
-                 label:
+                 label: function(tooltipItem) {
+                   return tooltipItem.dataset.label + ': ' + tooltipItem.raw.toFixed(2);
+                 }
+               }
+             }
+           }
+         }
+       };
+
+       // Create the chart
+       new Chart(ctx, config);
+     }
+   }
+
    ```
+
+### 5. **Update the HTML Template (`trajectory-chart.component.html`)**:
+
+In the `trajectory-chart.component.html`, you just need the `<canvas>` tag to hold the chart:
+
+```html
+<h2>Trajectory Arc with Background Fill</h2>
+<canvas id="myChart"></canvas>
+```
+
+### 6. **Add Styling (`trajectory-chart.component.css`)**:
+
+You can add basic styling to the component to ensure the chart fits well within the page. Here's an example:
+
+```css
+canvas {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+}
+```
+
+### 7. **Include the Component in the Main Application**:
+
+To display the `TrajectoryChartComponent` in the application, you will need to add it to the `app.component.html`.
+
+In `app.component.html`:
+
+```html
+<app-trajectory-chart></app-trajectory-chart>
+```
+
+### 8. **Run the Application**:
+
+Now, you can run the Angular app by executing the following command:
+
+```bash
+ng serve
+```
+
+Open your browser and navigate to `http://localhost:4200` to see the chart in action.
+
+### Conclusion
+
+With these changes, you’ve successfully converted the **Trajectory Arc** chart into an Angular application. The Angular component will dynamically generate and display the chart, using the same logic from your provided HTML and JavaScript. You can extend this by adding features like dynamic data input, additional interactivity, or even backend integration to fetch real-time data.
